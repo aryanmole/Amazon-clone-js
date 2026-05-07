@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/shared/general.css" />
+    <link rel="stylesheet" href="styles/pages/auth.css" />
+  </head>
+  <body>
+    <main class="auth-page">
+      <form class="auth-card js-login-form">
+        <h1>Sign In</h1>
+        <p class="auth-message js-auth-message"></p>
+        <label>Email</label>
+        <input class="auth-input js-email" type="email" required />
+        <label>Password</label>
+        <input class="auth-input js-password" type="password" minlength="6" required />
+        <button class="button-primary auth-submit" type="submit">Login</button>
+        <p class="auth-footer">
+          New here? <a href="register.html">Create account</a>
+        </p>
+      </form>
+    </main>
+    <script type="module" src="scripts/login.js"></script>
+  </body>
+</html>
