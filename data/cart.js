@@ -22,11 +22,11 @@ export async function initCart() {
   return cart;
 }
 
-export async function addToCart(productId) {
+export async function addToCart(productId, quantityDelta = 1) {
   const response = await fetch('http://localhost:4000/api/cart/items', {
     method: 'POST',
     headers: authHeaders(),
-    body: JSON.stringify({ productId, quantityDelta: 1 })
+    body: JSON.stringify({ productId, quantityDelta: Number(quantityDelta) || 1 })
   });
   const data = await response.json();
   if (!response.ok) {

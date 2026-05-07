@@ -97,10 +97,13 @@ router.get('/:orderId/items/:itemId/tracking', requireAuth, async (req, res) => 
   }
 
   const startTime = new Date(order.createdAt).getTime();
-  const endTime = new Date(item.expectedDeliveryDate).getTime();
   const now = Date.now();
-  const ratio = Math.max(0, Math.min(1, (now - startTime) / (endTime - startTime || 1)));
-  const progressPercent = Math.round(ratio * 100);
+
+  // Move one fixed step every 10 seconds.
+  const stepDurationMs = 10 * 1000;
+  const stepSizePercent = 10;
+  const elapsedSteps = Math.floor((now - startTime) / stepDurationMs);
+  const progressPercent = Math.max(0, Math.min(100, elapsedSteps * stepSizePercent));
 
   const stage = progressPercent >= 100 ? 'delivered' : progressPercent >= 55 ? 'shipped' : 'preparing';
 

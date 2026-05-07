@@ -60,7 +60,7 @@ async function initTrackingPage() {
   updateCartQuantity();
 
   await refreshTracking(orderId, itemId);
-  setInterval(() => refreshTracking(orderId, itemId), 5000);
+  setInterval(() => refreshTracking(orderId, itemId), 1000);
 }
 
 initTrackingPage();

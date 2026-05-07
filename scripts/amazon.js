@@ -75,6 +75,8 @@ async function renderProducts() {
         const productId = button.dataset.productId;
 
         const productContainer = button.closest('.product-container');
+        const quantitySelect = productContainer.querySelector('select');
+        const selectedQuantity = Number(quantitySelect.value) || 1;
         const addedToCart = productContainer.querySelector('.added-to-cart');
 
         addedToCart.style.opacity = 1;
@@ -82,7 +84,7 @@ async function renderProducts() {
           addedToCart.style.opacity = 0;
         }, 2000);
 
-        await addToCart(productId);
+        await addToCart(productId, selectedQuantity);
         updateCartQuantity();
       });
     });
